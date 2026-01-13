@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Payment - Kohinur Videos{% endblock %}
+{% block title %}Payment - Kohinoor Videos{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -22,7 +22,7 @@ var options = {
     "key": "{{ key_id }}",
     "amount": "{{ order.amount }}",
     "currency": "INR",
-    "name": "Kohinur Videos",
+    "name": "Kohinoor Videos",
     "description": "Subscription Payment", {# More descriptive #}
     "order_id": "{{ order.id }}",
     "handler": function (response){
@@ -33,7 +33,7 @@ var options = {
         "email": "{{ current_user.email }}"
     },
     "notes": {
-        "address": "Kohinur HQ" {# Updated notes address #}
+        "address": "Kohinoor HQ" {# Updated notes address #}
     },
     "theme": {
         "color": "#FF0000" {# Changed to YouTube red #}
