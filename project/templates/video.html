@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}{{ video.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8"> {# Main video content area #}
+        <div class="video-player-container mb-3">
+            <video src="{{ url_for('static', filename='videos/' + video.filename) }}" controls autoplay muted class="w-100 h-100"></video>
+        </div>
+
+        <div class="video-details">
+            <h1>{{ video.title }}</h1>
+            <div class="video-meta">
+                <div class="channel-info">
+                    <div class="channel-avatar"></div> {# Placeholder for channel avatar #}
+                    <div>
+                        <span class="channel-name">Channel Name</span> {# Placeholder for channel name #}
+                        <span class="text-muted d-block">1.2M subscribers</span> {# Placeholder for subscriber count #}
+                    </div>
+                    <button class="subscribe-btn ms-3">Subscribe</button> {# Placeholder subscribe button #}
+                </div>
+                <div class="video-actions">
+                    {# Placeholder for like/dislike/share buttons #}
+                    <button class="btn btn-dark btn-sm me-2"><i class="fas fa-thumbs-up"></i> 123K</button>
+                    <button class="btn btn-dark btn-sm me-2"><i class="fas fa-thumbs-down"></i> 5K</button>
+                    <button class="btn btn-dark btn-sm"><i class="fas fa-share"></i> Share</button>
+                </div>
+            </div>
+            <div class="video-description">
+                <p class="text-muted">{{ video.upload_date.strftime('%b %d, %Y') }}</p>
+                <p>{{ video.description }}</p>
+            </div>
+        </div>
+
+        {# Placeholder for Comments Section #}
+        <div class="comments-section mt-5">
+            <h3>Comments</h3>
+            <div class="card bg-dark text-white p-3 mb-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="channel-avatar me-2" style="width: 30px; height: 30px;"></div>
+                    <span class="comment-author">User Name</span>
+                    <span class="text-muted ms-2">2 days ago</span>
+                </div>
+                <p class="comment-text">This is a placeholder comment. Great video!</p>
+            </div>
+            <div class="card bg-dark text-white p-3 mb-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="channel-avatar me-2" style="width: 30px; height: 30px;"></div>
+                    <span class="comment-author">Another User</span>
+                    <span class="text-muted ms-2">1 day ago</span>
+                </div>
+                <p class="comment-text">Another placeholder comment to show the layout.</p>
+            </div>
+            {# Add comment input form here #}
+        </div>
+    </div>
+
+    <div class="col-lg-4"> {# Related videos sidebar #}
+        <h3>Up Next</h3>
+        {# Placeholder for related videos #}
+        <div class="card bg-dark mb-2">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <img src="https://via.placeholder.com/160x90?text=Related+Video" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body py-2">
+                        <h6 class="card-title mb-1">Related Video Title goes here</h6>
+                        <p class="card-text text-muted small mb-0">Channel Name</p>
+                        <p class="card-text text-muted small">100K views</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark mb-2">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <img src="https://via.placeholder.com/160x90?text=Related+Video" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body py-2">
+                        <h6 class="card-title mb-1">Another Related Video Title</h6>
+                        <p class="card-text text-muted small mb-0">Another Channel</p>
+                        <p class="card-text text-muted small">50K views</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

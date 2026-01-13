@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Subscribe - Kohinur Videos{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center"> {# Centered the subscription plans #}
+    {% for plan in plans %}
+    <div class="col-lg-4 col-md-6 mb-4"> {# Responsive columns #}
+        <div class="card text-center bg-dark text-white p-3"> {# Added bg-dark and text-white classes #}
+            <div class="card-header bg-secondary border-bottom border-secondary"> {# Darker header for distinction #}
+                <h3 class="my-0 font-weight-normal text-white">{{ plan.name }}</h3>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title my-3">₹{{ plan.price / 100 }} <small class="text-muted">/ mo</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Access to all our exclusive content.</li>
+                    <li>Ad-free experience.</li>
+                    <li>High-quality streaming.</li>
+                </ul>
+                <a href="{{ url_for('main.pay', plan_id=plan.id) }}" class="btn btn-lg btn-block btn-primary">Choose Plan</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

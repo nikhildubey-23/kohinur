@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card bg-dark text-white p-4"> {# Added bg-dark and text-white classes #}
+            <div class="card-body">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4 text-white">Join Today</legend> {# Ensured legend text is white #}
+                        <div class="mb-3">
+                            {{ form.username.label(class="form-label") }}
+                            {% if form.username.errors %}
+                                {{ form.username(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.username(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.email.label(class="form-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.date_of_birth.label(class="form-label") }}
+                            {% if form.date_of_birth.errors %}
+                                {{ form.date_of_birth(class="form-control is-invalid", type="date") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.date_of_birth.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.date_of_birth(class="form-control", type="date") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.password.label(class="form-label") }}
+                            {% if form.password.errors %}
+                                {{ form.password(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.confirm_password.label(class="form-label") }}
+                            {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.confirm_password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.confirm_password(class="form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="d-grid mt-4"> {# Added mt-4 for spacing #}
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+                <div class="text-center mt-3"> {# Moved text-center and mt-3 here #}
+                    <small class="text-muted">
+                        Already Have An Account? <a href="{{ url_for('users.login') }}" class="text-info">Sign In</a> {# Used text-info for a blue link #}
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

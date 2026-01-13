@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Trending - Kohinur Videos{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <h2 class="text-white">Trending Videos</h2>
+        <p class="text-muted">Discover what's hot right now on KohinurTube.</p>
+    </div>
+    {% if trending_videos %}
+        {% for video in trending_videos %}
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+            <a href="{{ url_for('main.video', video_id=video.id) }}" class="card-link">
+                <div class="card video-card">
+                    <img src="https://via.placeholder.com/320x180?text=Trending+Video" class="card-img-top" alt="{{ video.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text channel-name">Channel Name</p>
+                        <p class="card-text video-stats">2.5M views • 1 day ago</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info text-center" role="alert">
+                No trending videos available at the moment. Check back later!
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

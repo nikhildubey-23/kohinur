@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - Kohinur Videos{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card bg-dark text-white p-4"> {# Added bg-dark and text-white classes #}
+            <div class="card-body text-center">
+                <img src="https://via.placeholder.com/150/303030/f1f1f1?text={{ current_user.username[0]|upper }}" class="rounded-circle mb-3 border border-secondary" alt="Profile Picture"> {# Placeholder with initial #}
+                <h2 class="card-title">{{ current_user.username }}</h2>
+                <p class="text-muted">{{ current_user.email }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card bg-dark text-white p-4"> {# Added bg-dark and text-white classes #}
+            <div class="card-body">
+                <h5 class="card-title">Subscription Status</h5>
+                {% if current_user.is_subscribed %}
+                    <p class="card-text text-success">You are currently subscribed.</p> {# Text success for positive status #}
+                    {% if current_user.subscription %}
+                    <p class="card-text text-muted">Your subscription ends on: {{ current_user.subscription.end_date.strftime('%Y-%m-%d') }}</p>
+                    {% endif %}
+                {% else %}
+                    <p class="card-text text-warning">You are not subscribed. <a href="{{ url_for('main.subscribe') }}" class="text-info">Subscribe now</a>.</p> {# Text warning for negative status, text-info for link #}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

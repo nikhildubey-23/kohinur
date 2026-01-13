@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Kohinur Videos{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% if videos %}
+        {% for video in videos %}
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4"> {# Responsive columns for different screen sizes #}
+            <a href="{{ url_for('main.video', video_id=video.id) }}" class="card-link">
+                <div class="card video-card"> {# Added video-card class for potential specific styling #}
+                    <img src="https://via.placeholder.com/320x180?text=Video+Thumbnail" class="card-img-top" alt="{{ video.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text channel-name">Channel Name</p> {# Placeholder for channel name #}
+                        <p class="card-text video-stats">1.2M views • 2 days ago</p> {# Placeholder for view count and time #}
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info text-center" role="alert">
+                No videos available at the moment. <a href="{{ url_for('main.upload_video') }}" class="alert-link">Upload one now</a>.
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

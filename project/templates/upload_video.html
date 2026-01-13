@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card bg-dark text-white p-4"> {# Added bg-dark and text-white classes #}
+            <div class="card-body">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4 text-white">Upload Video</legend> {# Ensured legend text is white #}
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {% if form.title.errors %}
+                                {{ form.title(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.title.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.title(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.description.label(class="form-label") }}
+                            {% if form.description.errors %}
+                                {{ form.description(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.description.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.description(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.video_file.label(class="form-label") }}
+                            {% if form.video_file.errors %}
+                                {{ form.video_file(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.video_file.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.video_file(class="form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="d-grid mt-4"> {# Added mt-4 for spacing #}
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
